@@ -1,35 +1,19 @@
-import { useEffect, useState } from "react";
-import keycloak from "../keycloak";
-
-let initialized = false; // 👈 global guard
-
-export default function ProtectedRoute({ children }) {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    if (initialized) return; // 👈 prevents double init
-    initialized = true;
-
-    keycloak
-      .init({
-        onLoad: "login-required",
-        checkLoginIframe: false,
-      })
-      .then(() => {
-        setUser({
-            username: keycloak.tokenParsed?.preferred_username,
-            email: keycloak.tokenParsed?.email,
-            roles: keycloak.tokenParsed?.realm_access?.roles || [],
-});
-      })
-      .catch((err) => {
-        console.error("KC INIT ERROR:", err);
-      });
-  }, []);
-
-  if (!user) {
-    return <div className="text-center mt-20">Authenticating...</div>;
+export default function ProtectedRoute({ children, keycloak }) {
+  // Wait until keycloak is ready
+  if (!keycloak || !keycloak.authenticated) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+      </div>
+    );
   }
+
+  // Extract user from token
+  const user = {
+    username: keycloak.tokenParsed?.preferred_username,
+    email: keycloak.tokenParsed?.email,
+    roles: keycloak.tokenParsed?.realm_access?.roles || [],
+  };
 
   return children(user);
 }

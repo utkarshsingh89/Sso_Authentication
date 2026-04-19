@@ -50,12 +50,12 @@ export default function Dashboard({ user }) {
       <div className="grid gap-6 md:grid-cols-3">
         <div className="bg-white p-6 rounded-xl shadow">
           <h3 className="text-lg font-semibold">Users</h3>
-          <p className="text-2xl mt-2">1,245</p>
+          <p className="text-2xl mt-2">3</p>
         </div>
 
         <div className="bg-white p-6 rounded-xl shadow">
           <h3 className="text-lg font-semibold">Revenue</h3>
-          <p className="text-2xl mt-2">$12,340</p>
+          <p className="text-2xl mt-2">0.0</p>
         </div>
 
         <div className="bg-white p-6 rounded-xl shadow">
