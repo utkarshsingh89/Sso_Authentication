@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
-
-// 1. Configure JWT Authentication
+// Configure JWT Authentication (chain AddJwtBearer onto AddAuthentication)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
    .AddJwtBearer(options =>
    {
