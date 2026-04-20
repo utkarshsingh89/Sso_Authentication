@@ -34,7 +34,7 @@ Sso_Authentication/
 │   ├── appsettings.json
 │   ├── KeycloakSsoDemo.csproj
 │
-├── frontend/               # React App (Vite)
+├── sso-ui-fixed/               # React App (Vite)
 │   ├── src/
 │   ├── package.json
 │
