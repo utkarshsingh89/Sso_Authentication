@@ -33,11 +33,16 @@ Sso_Authentication/
 │   ├── Program.cs
 │   ├── appsettings.json
 │   ├── KeycloakSsoDemo.csproj
+|
 │
 ├── sso-ui-fixed/               # React App (Vite)
 │   ├── src/
 │   ├── package.json
 │
+├── second-app/
+|    ├── src/
+|   ├── package.json
+|
 ├── .gitignore
 ├── README.md
 ```
@@ -112,6 +117,7 @@ npm run dev
 ```
 
 Frontend runs on: `http://localhost:5173`
+Frontend second runs on: `http://localhost:5174`
 
 ---
 
